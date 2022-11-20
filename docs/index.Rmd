@@ -1,7 +1,7 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Inequality in the Prison System"
+author: "Delaney Wu"
+date: '2022-11-21'
 output: html_document
 ---
 
@@ -11,38 +11,51 @@ source("../source/analysis.R")
 ```
 
 ## Abstract 
-[TODO: Include a short abstract (about 50 words)]
+The main goal of this report is to show the distribution of jail population within the US from 1970-2018. This is important because it allows us to see which locations have the highest jail population and also the inequalities within the jail population. The main inequality in this report is gender, the comparison between the female jail population and the male jail population. 
 
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
-```
 As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
 
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-* Another bullet point
-* Another *special* bullet point
-
-of numbers: `r test_query2(num)`.
-
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
-
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
-```
-
 ## Introduction 
-[TODO]
+The social issues related to this data set is generally focused around gender, race, and minorities within the US. The direct stakeholders would be those of the gender, race, and minority groups that are shown to be discriminated against, and those who are currently incarcerated. The indirect stakeholders would be the family and friends of those who are of the gender, race, and minority groups shown to be discriminated against, and those who are currently incarcerated. The government would also be an indirect stakeholder because they might be able to make changes to the current prison/arrest system to address the social issues presented through this report. Some questions this report will address are: What is the trend of Jail population in the US from 1970 - 2018? What is the growth of the jail population by state? What is the distribution of jail population by gender throughout the United States from 1970 - 2018? 
 
 ## Data Summary 
-[TODO]
+The maximum jail population was `r max`. This is important to know because it shows the maximum number of the jailed population. The maximum jail population in 2018 was `r max_in_2018` while the jail population in 2017 was `r max_in_1970`. This is a difference of `r dif`. This is important because it shows the increase in jail population from 1970 - 2018. The maximum female jail population is `r max_f` while the maximum male jail population is `r max_m`. The male jail population is larger than the female jail population by `r max_jail_gender_dif`.
 
+## Growth of the U.S. Prison Population
+```{r echo = FALSE, message = FALSE}
+plot_jail_pop_for_us()
+```
+
+Summary:
+
+There seems to be an exponential increase in the total jail population in the US beginning in the 1980s, and the population peaks in 2008 at 778201 incarcerated. After this peak, the numbers begin to decrease though at a much slower rate than the increase. The rate of decrease seems to be at least half the speed of the increase. 
 [TODO ... other sections ... See Canvas for details]
 
-_All the very best with your work!_
+## Growth of Prison Population by State
+```{r echo = FALSE, message = FALSE}
+plot_jail_pop_by_states(c("WA", "CA", "TX"))
+```
+
+Summary:
+
+Through the comparison between Washington State, Texas State, and California State, we can see how the jail population in California is much higher than the jail population in Washington and similar trend to Texas. Comparisons apart, the total jail population in all three states show increase. The most severe increase among the three states is California, where it seems as if there is an exponential increase before starting to stabilize within a certain range. The comparison is between Washington State, Texas State, and California State because I reside in Washington State and California and Texas State have the highest gun violence rate so I was curious what the jail population would be compared to Washington State. 
+
+## Prison population comparison by gender through the years
+```{r echo = FALSE, message = FALSE}
+plot_jail_pop_by_gender_over_year()
+```
+
+Summary: 
+
+The question I decided to answer using the scatter plot is: What is the jail distribution by gender through the years 1970-2018, and is it disproportional? Looking at the scatter plot above, we can see that there is a significantly higher male jail population compared to the female jail population. The different colors show that each year, both the male and female jail populations have increased, yet overall, the general trend is for more males to be jailed compared to females with a few outliers that show more males jailed and also one outlier with more females jailed. 
+
+## Prison population distribution by gender through the U.S.
+```{r echo = FALSE, message = FALSE}
+jail_pop_distribution_by_gender_by_state("female")
+jail_pop_distribution_by_gender_by_state("male")
+```
+
+Summary: 
+
+The question I decided to answer using the two maps above is: what is the jail distribution by gender across the United States? First of all, from both the maps, we can see that the most jail population is in California state with Texas and Florida closely following behind.If one looks closely at the key of both maps, the numbers are significantly different. The maximum total male population in jail is over 2,500,000 whereas the maximum total female population in jail is below 400,000. From this, we can see how the male population is jailed more overall throughout the United States compared to the female population. 
 
