@@ -228,7 +228,7 @@ jail_pop_distribution_by_gender_by_state <- function(gender){
         size = .1        # thinly stroked
       ) +
       coord_map() + # use a map-based coordinate system
-      scale_fill_continuous(low = "Light Blue", high = "Navy") +
+      scale_fill_continuous(low = "Light Blue", high = "Navy", labels = scales::comma) +
       labs(
         fill = "Total_Male_Jail_Population",
         title = "Male Jail Population Distribution Across the US (1970-2018)",
